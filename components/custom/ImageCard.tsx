@@ -9,10 +9,11 @@ import { useQueryClient } from "@tanstack/react-query";
 export default function ImageCard({ id, imageUrl, text, created_at }) {
   const truncated = text.length > 160 ? text.substring(0, 160) + "..." : text;
   const router = useRouter();
+      const queryClient = useQueryClient() ;
+
   const handleDelete = async () => {
     try {
       const res = await axios.post('/api/delete-result', { id }) ;
-      const queryClient = useQueryClient() ;
       await queryClient.invalidateQueries({
         queryKey: ['fetch']
       }) ;
@@ -40,13 +41,13 @@ export default function ImageCard({ id, imageUrl, text, created_at }) {
 
       {/* Text */}
       <CardContent className="p-6">
-        <p className="text-sm text-muted-foreground leading-relaxed relative max-h-20 overflow-hidden pr-1">
+        <div className="text-sm text-muted-foreground leading-relaxed relative max-h-20 overflow-hidden pr-1">
           {truncated}
 
           {text.length > 160 && (
             <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-background to-transparent" />
           )}
-        </p>
+        </div>
       </CardContent>
 
       {/* Footer */}

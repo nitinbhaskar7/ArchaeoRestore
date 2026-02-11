@@ -181,7 +181,7 @@ const Page = () => {
 
 
     try {
-      const res = await axios.post('http://127.0.0.1:8000/ocr', formData, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/ocr`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       console.log('OCR Response:', res.data);

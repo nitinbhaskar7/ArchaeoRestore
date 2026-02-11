@@ -35,7 +35,7 @@ const Hero = ({
     },
     secondary: {
       text: "View on GitHub",
-      url: "https://github.com/your-repo",
+      url: "https://github.com/adityabhandari781/Inscription-character-deciphering-for-Brahmi-script.git",
     },
   },
   image = {
